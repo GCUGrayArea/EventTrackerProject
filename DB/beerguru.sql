@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `drink` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `price` DECIMAL(4,2) NULL,
-  `tab_id` INT NULL,
+  `tab_id` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -85,6 +85,20 @@ COMMIT;
 START TRANSACTION;
 USE `beergurudb`;
 INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (1, 'Blue Hawaiian', 4, 1);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (2, 'Midori Sour', 2, 2);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (3, 'Irish Car Bomb', 3, 3);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (4, 'Tom Collins', 1.5, 4);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (5, 'Guinness draught', 3.75, 5);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (6, 'Yuengling bottle', 7.5, 1);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (7, 'Thai Terror', 1.25, 2);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (8, 'Black Russian', 3, 3);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (9, 'Kamikaze', 1.25, 4);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (10, 'Yamazaki dram', 3.25, 5);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (11, 'Modelo pitcher', 10, 1);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (12, 'Long Island Iced Tea', 5.5, 2);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (13, 'Dead Guy IPA can', 3.99, 3);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (14, 'Arrogant Bastard bottle', 2.99, 4);
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (15, 'Summer Shandy can', 0.99, 5);
 
 COMMIT;
 
@@ -95,6 +109,10 @@ COMMIT;
 START TRANSACTION;
 USE `beergurudb`;
 INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (1, 'The Rusty Spur', DEFAULT, 'Casey');
+INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (2, 'Harry\'s', DEFAULT, 'Jack');
+INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (3, 'New Bohemia', DEFAULT, 'Steve');
+INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (4, 'The Prancing Pony', DEFAULT, 'Dog');
+INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (5, 'Evildrome Boozarama', DEFAULT, 'Ebenezer');
 
 COMMIT;
 

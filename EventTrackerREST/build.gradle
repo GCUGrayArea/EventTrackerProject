@@ -5,6 +5,15 @@ plugins {
 	id 'war'
 }
 
+apply plugin: 'war'
+war {
+  enabled = true
+  // Gradle will replace the variable baseName
+  // with our app name, as defined in settings.gradle
+  archiveName = "${baseName}.war"
+  destinationDir = file("./")         // Project root directory
+}
+
 group = 'com.skilldistillery'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'

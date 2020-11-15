@@ -1,6 +1,6 @@
 # SD27 homework, week 12 : Event Tracker
 
-This project calls on us to make a REST API delivering basic CRUD functionality for at least one table. For this specific project I've created a Spring boot app that allows a user to track their bar tabs over several nights out, including the location visited and the drinks purchased at each location via a MySQL database. Spring Data JPA is used to simplify coding of the API, so no explicit `EntityManager` objects or JPQL queries need be included. In addition to basic CRUD functionality, limited functionality is provided to filter the list of bar tabs by location.
+This project calls on us to make a REST API delivering basic CRUD functionality for at least one table. For this specific project I've created a Spring boot app that allows a user to track their bar tabs over several nights out, including the location visited and the drinks purchased at each location via a MySQL database. Spring Data JPA is used to simplify coding of the API, so no explicit `EntityManager` objects or JPQL queries need be included. In addition to basic CRUD functionality, limited functionality is provided to filter the list of bar tabs by location. The EC2 deployment of this service can be accessed at `3.12.33.67:8088/EventTrackerREST`
 
 API endpoints and their functionality are as follows:
 | HTTP Verb | URI                                  | Request Body                                         | Response Body                                                            | Purpose           |
