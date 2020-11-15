@@ -6,16 +6,17 @@
 
 
 
-  <persistence-unit name="Xtreme9Lives">
+  <persistence-unit name="BeerGuru">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
     
-    <class>com.skilldistillery.beerguru.entities.Beer</class>
-  
+    <class>com.skilldistillery.beerguru.entities.Drink</class>
+    <class>com.skilldistillery.beerguru.entities.BarTab</class>
+ 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/beergurudb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-      <property name="javax.persistence.jdbc.user" value="xtreme"/>
-      <property name="javax.persistence.jdbc.password" value="xtreme" />
+      <property name="javax.persistence.jdbc.user" value="dbuser"/>
+      <property name="javax.persistence.jdbc.password" value="dbuser" />
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 
       <property name="hibernate.show_sql" value="false" />

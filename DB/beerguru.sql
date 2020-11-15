@@ -30,6 +30,34 @@ CREATE TABLE IF NOT EXISTS `beer` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `drink`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `drink` ;
+
+CREATE TABLE IF NOT EXISTS `drink` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `price` DECIMAL(4,2) NULL,
+  `tab_id` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bar_tab`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bar_tab` ;
+
+CREATE TABLE IF NOT EXISTS `bar_tab` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `location` VARCHAR(45) NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `bartender` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS dbuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -47,6 +75,26 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `beergurudb`;
 INSERT INTO `beer` (`id`, `name`, `brewery`, `style`, `abv`, `description`) VALUES (1, 'A', 'B', 'C', 5.0, 'D');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `drink`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beergurudb`;
+INSERT INTO `drink` (`id`, `name`, `price`, `tab_id`) VALUES (1, 'Blue Hawaiian', 4, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `bar_tab`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beergurudb`;
+INSERT INTO `bar_tab` (`id`, `location`, `created_at`, `bartender`) VALUES (1, 'The Rusty Spur', DEFAULT, 'Casey');
 
 COMMIT;
 
