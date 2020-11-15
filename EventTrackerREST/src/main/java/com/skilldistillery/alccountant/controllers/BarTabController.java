@@ -35,6 +35,11 @@ public class BarTabController {
 		return svc.show(id);
 	}
 	
+	@GetMapping("tabs/search/{kw}")
+	public List<BarTab> tabsByLocationSearch( @PathVariable String kw ) {
+		return svc.findBarTabByLocationLike(kw);
+	}
+	
 	@PostMapping("tabs")
 	public BarTab create( @RequestBody BarTab tab , HttpServletRequest request , HttpServletResponse response ) {
 		try {
