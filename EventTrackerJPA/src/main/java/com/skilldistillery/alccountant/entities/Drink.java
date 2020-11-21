@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Drink {
 	@Id
@@ -16,6 +18,7 @@ public class Drink {
 	private String name;
 	private Double price;
 	@ManyToOne( cascade = { CascadeType.PERSIST, CascadeType.REMOVE } )
+	@JsonIgnore
 	@JoinColumn( name = "tab_id")
 	private BarTab tab;
 	

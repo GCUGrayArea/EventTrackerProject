@@ -21,7 +21,6 @@ public class BarTab {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
-	@JsonIgnore
 	@OneToMany(mappedBy = "tab")
 	private List<Drink> drinks;
 	private String location;
