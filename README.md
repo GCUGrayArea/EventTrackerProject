@@ -16,3 +16,5 @@ API endpoints and their functionality are as follows:
 | POST      | `api/tabs/`                          | representation of a new  *tab*  resource             | description of the result of the operation                               | CREATE endpoint   |
 | PUT       | `api/tabs/{id}`                      | representation of a new version of  *tab* `id`       | updated *tab* resource                                                   | UPDATE endpoint   |
 | DELETE    | `api/tabs/{id}`                      |                                                      |                                                                          | DELETE endpoint   |
+
+As of 11/22 a graphical frontend has been added using this API via Javascript to perform CRUD operations.
