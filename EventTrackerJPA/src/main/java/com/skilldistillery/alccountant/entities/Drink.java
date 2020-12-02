@@ -17,8 +17,8 @@ public class Drink {
 	private int id;
 	private String name;
 	private Double price;
-	@ManyToOne( cascade = { CascadeType.PERSIST, CascadeType.REMOVE } )
 	@JsonIgnore
+	@ManyToOne( cascade = { CascadeType.PERSIST, CascadeType.REMOVE } )
 	@JoinColumn( name = "tab_id")
 	private BarTab tab;
 	

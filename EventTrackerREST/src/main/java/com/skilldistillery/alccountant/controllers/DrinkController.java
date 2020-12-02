@@ -85,14 +85,14 @@ public class DrinkController {
 		return drink;
 	}
 	
-	@DeleteMapping("tabs/{tabId}/drinks/{drinkId}")
+	@DeleteMapping("drinks/{drinkId}")
 	public void deleteDrink(
 			@PathVariable Integer drinkId ,
-			@PathVariable Integer tabId ,
+//			@PathVariable Integer tabId ,
 			HttpServletResponse response
 			) {
 		try {
-			boolean deleted = svc.delete(drinkId, tabId);
+			boolean deleted = svc.delete(drinkId);//, tabId);
 			if (deleted) {
 				response.setStatus(204);
 			}

@@ -1,6 +1,5 @@
 package com.skilldistillery.alccountant.entities;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,15 +24,14 @@ public class BarTab {
 	private List<Drink> drinks;
 	private String location;
 	
-	@CreationTimestamp
 	@Column( name = "created_at" )
-	private LocalDateTime createdAt;
+	private String createdAt;
 	
 	public BarTab() {
 		super();
 	}
 	
-	public BarTab(List<Drink> drinks, String location, LocalDateTime createdAt) {
+	public BarTab(List<Drink> drinks, String location, String createdAt) {
 		super();
 		this.drinks = drinks;
 		this.location = location;
@@ -64,11 +62,11 @@ public class BarTab {
 		this.location = location;
 	}
 	
-	public LocalDateTime getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 

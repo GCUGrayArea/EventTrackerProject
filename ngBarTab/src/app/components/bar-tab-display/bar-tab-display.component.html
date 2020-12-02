@@ -1,0 +1,80 @@
+<h1 id="title">Welcome to Alcountant! (the bar tab tracker)</h1>
+<div id="newTab">
+  <div *ngIf="!selectedTab">
+    <h4>Add a New Tab</h4>
+  <input type="text" [(ngModel)]="newTab.location" name="location" placeholder="Enter location name...">
+  <button (click)="createTab()">Submit</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Date</th>
+        <th># of drinks</th>
+        <th>Total</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tabs">
+        <td (click)="selectTab(item)">{{ item.location }}</td>
+        <td>{{ item.createdAt }}</td>
+        <td>{{ numberOfDrinksOnTab(item) }}</td>
+        <td>{{ total(item) }}</td>
+        <button (click)="initializeTabEdit(item)">EDIT</button>
+        <button (click)="deleteTab(item.id)">X</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="editTab">
+  <input type="text" [(ngModel)]="editTab.location" placeholder="Location name...">
+  <input type="text" [(ngModel)]="editTab.createdAt" placeholder="Date (YYYY-MM-DD)">
+  <button (click)="updateTab()">SAVE CHANGES</button>
+</div>
+<div *ngIf="selectedTab">
+  <h4>{{selectedTab.location}}, night of {{selectedTab.createdAt.split("T")[0]}}</h4>
+  <div>
+    <h6>Add a new drink:</h6>
+    <input type="text" [(ngModel)]="newDrink.name" placeholder="name">
+    <input type="number" [(ngModel)]="newDrink.price" placeholder="price">
+    <button (click)="addDrinkToSelectedTab()">Submit</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let drink of selectedTab.drinks">
+          <td>{{drink.id}}</td>
+          <td>{{drink.name}}</td>
+          <td>{{drink.price}}</td>
+          <button (click)="initializeDrinkEdit(drink);">EDIT</button>
+          <button (click)="deleteDrink(drink)">X</button>
+
+        </tr>
+      </tbody>
+      <tfoot style="text-align: center"><strong>TOTAL: ${{total(selectedTab)}}</strong></tfoot>
+  </table>
+  <div *ngIf="editDrink">
+    <input type="text" [(ngModel)]="editDrink.name" placeholder="{{editDrink.name}}">
+    <input type="number" [(ngModel)]="editDrink.price" placeholder="{{editDrink.price}}">
+    <button (click)="updateDrink(selectedTab.id)">SAVE CHANGES</button>
+  </div>
+  <button (click)="selectedTab=null">View All Tabs</button>
+</div>
+
+
+<div *ngIf="!selectedTab">
+  <input id="total" type="button" value = "How much have I spent?" (click)="tabTotal()">
+</div>
+<div *ngIf="totalAllTabs && !selectedTab">
+  <h3>You have spent {{ totalAllTabs | currency }} across {{ howManyTabs }} tabs.</h3>
+  <button (click)="totalAllTabs=0;">Hide</button>
+</div>

@@ -16,22 +16,6 @@ CREATE SCHEMA IF NOT EXISTS `beergurudb` DEFAULT CHARACTER SET utf8 ;
 USE `beergurudb` ;
 
 -- -----------------------------------------------------
--- Table `beer`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `beer` ;
-
-CREATE TABLE IF NOT EXISTS `beer` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NULL,
-  `brewery` VARCHAR(255) NULL,
-  `style` VARCHAR(255) NULL,
-  `abv` DECIMAL(3,1) NULL,
-  `description` VARCHAR(4095) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `drink`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `drink` ;
@@ -53,7 +37,7 @@ DROP TABLE IF EXISTS `bar_tab` ;
 CREATE TABLE IF NOT EXISTS `bar_tab` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `location` VARCHAR(45) NULL,
-  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `created_at` VARCHAR(45) NOT NULL DEFAULT 'CONVERT( VARCHAR, GETDATE(), 112)',
   `bartender` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -68,16 +52,6 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'dbuser'@'localhost'
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `beer`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `beergurudb`;
-INSERT INTO `beer` (`id`, `name`, `brewery`, `style`, `abv`, `description`) VALUES (1, 'A', 'B', 'C', 5.0, 'D');
-
-COMMIT;
-
 
 -- -----------------------------------------------------
 -- Data for table `drink`

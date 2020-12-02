@@ -14,7 +14,8 @@ public interface DrinkService {
 	Drink show( int id );
 	Drink create( Drink drink );
 	Drink update( int drinkId , Drink drink );
-	@Modifying
-	@Query( "DELETE FROM Drink d WHERE d.tab_id = :tid AND d.id = :did")
-	boolean delete( @Param("did") int drinkId , @Param("tid") int tabId );
+//	@Modifying
+//	@Query( "DELETE FROM Drink d WHERE d.tab_id = :tid AND d.id = :did")
+//	boolean delete( @Param("did") int drinkId , @Param("tid") int tabId );
+	boolean delete( int drinkId );
 }

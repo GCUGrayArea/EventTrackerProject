@@ -55,7 +55,7 @@ public class DrinkServiceImpl implements DrinkService {
 	@Override
 	@Modifying
 	@Query( "DELETE FROM Drink d WHERE d.tab_id = :tid AND d.id = :did")
-	public boolean delete(int drinkId, int tabId) {
+	public boolean delete(int drinkId) { //, int tabId) {
 		try {
 			repo.deleteById(drinkId);
 		} catch ( Exception e ) {
