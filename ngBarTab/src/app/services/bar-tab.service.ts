@@ -55,6 +55,7 @@ export class BarTabService {
 
   update( tab: BarTab ) {
     tab.drinks = [];
+    tab.createdAt = tab.createdAt.split("T")[0] + "T" + tab.createdAt.split("T")[1];
     const httpOptions = {
       headers: {
         'Content-type' : 'application/json'
