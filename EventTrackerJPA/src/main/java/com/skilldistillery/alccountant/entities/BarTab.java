@@ -1,5 +1,6 @@
 package com.skilldistillery.alccountant.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table( name = "bar_tab" )
 public class BarTab {
@@ -23,15 +22,15 @@ public class BarTab {
 	@OneToMany(mappedBy = "tab")
 	private List<Drink> drinks;
 	private String location;
-	
+	@CreationTimestamp
 	@Column( name = "created_at" )
-	private String createdAt;
+	private LocalDateTime createdAt;
 	
 	public BarTab() {
 		super();
 	}
 	
-	public BarTab(List<Drink> drinks, String location, String createdAt) {
+	public BarTab(List<Drink> drinks, String location, LocalDateTime createdAt) {
 		super();
 		this.drinks = drinks;
 		this.location = location;
@@ -62,11 +61,11 @@ public class BarTab {
 		this.location = location;
 	}
 	
-	public String getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 

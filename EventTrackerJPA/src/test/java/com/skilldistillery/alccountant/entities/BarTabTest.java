@@ -43,7 +43,7 @@ public class BarTabTest {
 		BarTab tab = em.find(BarTab.class, 1);
 		assertNotNull( tab );
 		assertEquals( "THE RUSTY SPUR".toLowerCase() , tab.getLocation().toLowerCase() );
-		assertEquals( "2020" , tab.getCreatedAt().substring( 0 , 4 ) );
+		assertEquals( "2020" , tab.getCreatedAt().toString().substring( 0 , 4 ) );
 		tab = null;
 	}
 	

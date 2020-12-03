@@ -165,10 +165,11 @@ export class BarTabDisplayComponent implements OnInit {
   }
 
   initializeTabEdit( tab: BarTab ) {
-    this.editTab = tab;
+    this.editTab = Object.assign( {} , tab );
   }
 
   updateTab() {
+    this.editTab.createdAt += "T00:00:00";
     this.barTabService.update(this.editTab).subscribe(
       (data) => {
         this.reloadTabs();

@@ -18,7 +18,7 @@
     <tbody>
       <tr *ngFor="let item of tabs">
         <td (click)="selectTab(item)">{{ item.location }}</td>
-        <td>{{ item.createdAt }}</td>
+        <td>{{ item.createdAt.split("T")[0] }}</td>
         <td>{{ numberOfDrinksOnTab(item) }}</td>
         <td>{{ total(item) }}</td>
         <button (click)="initializeTabEdit(item)">EDIT</button>
@@ -29,7 +29,6 @@
 </div>
 <div *ngIf="editTab">
   <input type="text" [(ngModel)]="editTab.location" placeholder="Location name...">
-  <input type="text" [(ngModel)]="editTab.createdAt" placeholder="Date (YYYY-MM-DD)">
   <button (click)="updateTab()">SAVE CHANGES</button>
 </div>
 <div *ngIf="selectedTab">
