@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { generate, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BarTab } from '../models/bar-tab';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,13 @@ import { BarTab } from '../models/bar-tab';
 
 export class BarTabService {
 
-  private baseUrl: string = 'http://localhost:8088/api/tabs/';
+  // private baseUrl: string = 'http://localhost:8088/';
+  private url = environment.baseUrl + 'api/tabs/';
 
   constructor( private http: HttpClient ) { }
 
   index(): Observable<BarTab[]> {
-    return this.http.get<BarTab[]>( this.baseUrl )
+    return this.http.get<BarTab[]>( this.url )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -25,7 +27,7 @@ export class BarTabService {
   }
 
   show( tid: number ) {
-    return this.http.get<BarTab>( this.baseUrl + tid )
+    return this.http.get<BarTab>( this.url + tid )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -42,7 +44,7 @@ export class BarTabService {
     }
     tab.drinks = [];
 
-    return this.http.post<BarTab>( this.baseUrl , tab , httpOptions )
+    return this.http.post<BarTab>( this.url , tab , httpOptions )
       .pipe(
         catchError((err: any) => {
           console.log(err);
@@ -52,13 +54,14 @@ export class BarTabService {
   }
 
   update( tab: BarTab ) {
+    tab.drinks = [];
     const httpOptions = {
       headers: {
         'Content-type' : 'application/json'
       }
     }
 
-  console.log(tab);
+    console.log(tab);
   // var current: BarTab;
   // this.show( tab.id ).subscribe(
   //   (data) => {
@@ -70,7 +73,7 @@ export class BarTabService {
   //   }
   // );
   // current.location = tab.location;
-    return this.http.put<BarTab>( this.baseUrl + tab.id , tab , httpOptions )
+    return this.http.put<BarTab>( this.url + tab.id , tab , httpOptions )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -80,7 +83,7 @@ export class BarTabService {
   }
 
   destroy( id: number ): Observable<boolean> {
-    return this.http.delete<boolean>( this.baseUrl + id  ).pipe(
+    return this.http.delete<boolean>( this.url + id  ).pipe(
         catchError( ( err: any ) => {
           console.log( err );
           return throwError("DELETE FAILED")

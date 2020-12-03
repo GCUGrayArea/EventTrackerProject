@@ -3,18 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { generate, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Drink } from '../models/drink';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrinkService {
 
-  private baseUrl: string = 'http://localhost:8088/api/tabs/';
+  private url: string = environment.baseUrl + 'api/tabs/';
 
   constructor( private http: HttpClient ) { }
 
   index(): Observable<Drink[]> {
-    return this.http.get<Drink[]>( this.baseUrl )
+    return this.http.get<Drink[]>( this.url )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -24,7 +25,7 @@ export class DrinkService {
   }
 
   show( tid: number ) {
-    return this.http.get<Drink[]>( this.baseUrl + tid )
+    return this.http.get<Drink[]>( this.url + tid )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -40,7 +41,7 @@ export class DrinkService {
       }
     }
 
-    return this.http.post<Drink>( this.baseUrl + tabId + '/drinks' , drink , httpOptions )
+    return this.http.post<Drink>( this.url + tabId + '/drinks' , drink , httpOptions )
       .pipe(
         catchError((err: any) => {
           console.log(err);
@@ -58,7 +59,7 @@ export class DrinkService {
 
     console.log(drink);
 
-    return this.http.put<Drink>( this.baseUrl + drink.tab.id + '/drinks/' + drink.id , drink , httpOptions )
+    return this.http.put<Drink>( this.url + drink.tab.id + '/drinks/' + drink.id , drink , httpOptions )
     .pipe(
       catchError((err: any) => {
         console.log(err);
@@ -68,7 +69,7 @@ export class DrinkService {
   }
 
   destroy( id: number ): Observable<boolean> {
-    return this.http.delete<boolean>( 'http://localhost:8088/api/drinks/'+ id  ).pipe(
+    return this.http.delete<boolean>( environment.baseUrl + 'api/drinks/'+ id  ).pipe(
         catchError( ( err: any ) => {
           console.log( err );
           return throwError("DELETE FAILED")
